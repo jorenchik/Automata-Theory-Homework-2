@@ -32,16 +32,16 @@ class TestNPDA(unittest.TestCase):
         self.assertEqual(npda.accepts_input("00111010110011100101"), True)  # BUG:
 
     def test_accepts_input_10(self):
-        self.assertEqual(npda.accepts_input("11010001101011001100"), True)  # BUG:
+        self.assertEqual(npda.accepts_input("11010001101011001100"), True)  # BUG: fixed
 
     def test_accepts_input_11(self):
-        self.assertEqual(npda.accepts_input("01000110110010110110"), True)
+        self.assertEqual(npda.accepts_input("01000110110010110110"), True)  # BUG: new
 
     def test_accepts_input_12(self):
-        self.assertEqual(npda.accepts_input("10011101001100101101"), True)
+        self.assertEqual(npda.accepts_input("10011101001100101101"), True)  # BUG: new
 
     def test_accepts_input_13(self):
-        self.assertEqual(npda.accepts_input("00110101010011011011"), True)  # BUG:
+        self.assertEqual(npda.accepts_input("00110101010011011011"), True)  # BUG: fixed
 
     def test_accepts_input_14(self):
         self.assertEqual(npda.accepts_input("11001001111101010100"), False)
@@ -53,7 +53,7 @@ class TestNPDA(unittest.TestCase):
         self.assertEqual(npda.accepts_input("10100110110011010100"), True)  # BUG:
 
     def test_accepts_input_17(self):
-        self.assertEqual(npda.accepts_input("01110011000101011011"), True)
+        self.assertEqual(npda.accepts_input("01110011000101011011"), True)  # BUG: new
 
     def test_accepts_input_18(self):
         self.assertEqual(npda.accepts_input("10001001010110101010"), False)
@@ -62,13 +62,17 @@ class TestNPDA(unittest.TestCase):
         self.assertEqual(npda.accepts_input("00101110111011001001"), False)
 
     def test_accepts_input_20(self):
-        self.assertEqual(npda.accepts_input("11010010001001011101"), False)  # BUG:
+        self.assertEqual(
+            npda.accepts_input("11010010001001011101"), False
+        )  # BUG: fixed
 
     def test_accepts_input_21(self):
-        self.assertEqual(npda.accepts_input("01010100110100110101"), False)  # BUG:
+        self.assertEqual(
+            npda.accepts_input("01010100110100110101"), False
+        )  # BUG: fixed
 
     def test_accepts_input_22(self):
-        self.assertEqual(npda.accepts_input("10001101010110001110"), True)  # BUG:
+        self.assertEqual(npda.accepts_input("10001101010110001110"), True)  # BUG: fixed
 
     def test_accepts_input_23(self):
         self.assertEqual(npda.accepts_input("01100110011001000101"), False)
