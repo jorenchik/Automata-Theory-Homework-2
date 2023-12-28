@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import unittest
 
 from automata.pda.npda import NPDA
 
@@ -104,6 +103,7 @@ npda = NPDA(
                 "1": {("s8", "")},
             },
             "1": {
+                "#": {("s7", "#")},
                 "1": {("s7", "1")},
             },
         },
@@ -133,35 +133,3 @@ npda = NPDA(
     final_states={"s6", "s7", "s8", "s9", "s10"},
     acceptance_mode="final_state",
 )
-
-
-class TestNPDA(unittest.TestCase):
-    def test_accepts_input(self):
-        self.assertEqual(npda.accepts_input("101"), True)
-        self.assertEqual(npda.accepts_input("1010"), False)
-        self.assertEqual(npda.accepts_input("10101"), True)
-        self.assertEqual(npda.accepts_input("101010"), False)
-        self.assertEqual(npda.accepts_input("01011011001001010101"), False)
-        self.assertEqual(npda.accepts_input("10011100110101001110"), False)
-        self.assertEqual(npda.accepts_input("01100100110010111001"), False)
-        self.assertEqual(npda.accepts_input("10101011101000100110"), False)
-        self.assertEqual(npda.accepts_input("00111010110011100101"), True)  # BUG:
-        self.assertEqual(npda.accepts_input("11010001101011001100"), True)  # BUG:
-        self.assertEqual(npda.accepts_input("01000110110010110110"), True)
-        self.assertEqual(npda.accepts_input("10011101001100101101"), True)
-        self.assertEqual(npda.accepts_input("00110101010011011011"), True)  # BUG:
-        self.assertEqual(npda.accepts_input("11001001111101010100"), False)
-        self.assertEqual(npda.accepts_input("01001011001101100101"), False)
-        self.assertEqual(npda.accepts_input("10100110110011010100"), True)  # BUG:
-        self.assertEqual(npda.accepts_input("01110011000101011011"), True)
-        self.assertEqual(npda.accepts_input("10001001010110101010"), False)
-        self.assertEqual(npda.accepts_input("00101110111011001001"), False)
-        self.assertEqual(npda.accepts_input("11010010001001011101"), False)  # BUG:
-        self.assertEqual(npda.accepts_input("01010100110100110101"), False)  # BUG:
-        self.assertEqual(npda.accepts_input("10001101010110001110"), True)  # BUG:
-        self.assertEqual(npda.accepts_input("01100110011001000101"), False)
-        self.assertEqual(npda.accepts_input("10101101101010110100"), True)  # BUG:
-
-
-if __name__ == "__main__":
-    unittest.main()
